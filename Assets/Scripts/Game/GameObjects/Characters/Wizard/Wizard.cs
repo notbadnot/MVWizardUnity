@@ -21,6 +21,8 @@ public class Wizard : Character
     private HandlerOfPlayerModels handlerOfPlayerModels;
     private InGameUIManager uIManager;
 
+
+
     [Inject]
     private void Construct(HandlerOfPlayerModels _handlerOfPlayerModels)
     {
