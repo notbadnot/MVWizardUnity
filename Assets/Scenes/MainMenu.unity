@@ -411,6 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1483145c92f286f44abc66ddc8758574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickClip: {fileID: 8300000, guid: 7cfe8c3db0c48044ea436b50fd3dae15, type: 3}
 --- !u!4 &1078253417
 Transform:
   m_ObjectHideFlags: 0

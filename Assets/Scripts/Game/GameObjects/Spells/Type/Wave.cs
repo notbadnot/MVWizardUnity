@@ -50,9 +50,6 @@ public class Wave : MonoBehaviour
         
         SpellVOL.x = SpVOLx;
         SpellVOL.y = SpVOLy;
-
-
-
     }
 
 

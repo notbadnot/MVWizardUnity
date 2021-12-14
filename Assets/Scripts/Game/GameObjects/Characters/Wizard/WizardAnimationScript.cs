@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 using Math = System.Math;
 
 public class WizardAnimationScript : MonoBehaviour
@@ -10,11 +11,8 @@ public class WizardAnimationScript : MonoBehaviour
     Vector2 newMoveVector;
     [SerializeField] private Animator bodyAnimator;
     [SerializeField] private Animator legsAnimator;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
+
 
     public void StartAttackingAnimation()
     {
@@ -35,12 +33,10 @@ public class WizardAnimationScript : MonoBehaviour
 
     public void PlayDeadAnimation()
     {
-        Debug.Log("PlayingDEAD");
         bodyAnimator.SetBool ("Dead", true);
         legsAnimator.SetBool("Dead", true);
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         secondPosition = gameObject.transform.position;
@@ -52,7 +48,6 @@ public class WizardAnimationScript : MonoBehaviour
         float newVectorx = moveVectorx * angleCos - moveVectory * angleSin;
         float newVectory = moveVectorx * angleSin + moveVectory * angleCos;
         newMoveVector = new Vector2(newVectorx, newVectory);
-        //newMoveVector = moveVector;
         firstPosition = gameObject.transform.position;
         CalculateMoveAnimation();
 

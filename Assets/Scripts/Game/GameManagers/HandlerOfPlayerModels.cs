@@ -8,7 +8,7 @@ public class HandlerOfPlayerModels : MonoBehaviour //Content models that connect
     public SpellModel spellModel;
     public StatsModel statsModel;
 
-    void Start()
+    void Awake()
     {
         spellModel = new SpellModel(); 
         spellModel.SetStandartSpellsInSpellBook();

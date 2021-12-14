@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class SkeletonAnimator : MonoBehaviour
 {
@@ -8,11 +9,9 @@ public class SkeletonAnimator : MonoBehaviour
     Vector2 secondPosition = Vector2.zero;
     Vector2 moveVector;
     [SerializeField] private Animator skeletonAnimator;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
+
+  
 
     private void CalculateMoveAnimation()
     {
@@ -24,7 +23,6 @@ public class SkeletonAnimator : MonoBehaviour
         skeletonAnimator.SetTrigger("Attack");
     } 
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         secondPosition = gameObject.transform.position;

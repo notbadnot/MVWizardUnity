@@ -15,11 +15,10 @@ GameObject:
   - component: {fileID: -3094669971452651031}
   - component: {fileID: 8688280013719153010}
   - component: {fileID: 5681173075226898349}
-  - component: {fileID: 2477594129024745773}
   - component: {fileID: 5170932437285907765}
   - component: {fileID: 2694964362615891628}
   - component: {fileID: 8982091934592479606}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Wizard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,9 +53,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08867189b96542740acb93b28747e9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movingComponent: {fileID: 836621341125280310}
+  animationScript: {fileID: -3094669971452651031}
   spellCaster: {fileID: 5698982672788693497}
   healthComponent: {fileID: 8688280013719153010}
   manaComponent: {fileID: 5681173075226898349}
+  deathClip: {fileID: 8300000, guid: c7c34d21c15855d4ab64a5069e821250, type: 3}
   alive: 0
 --- !u!114 &9059695018453462215
 MonoBehaviour:
@@ -70,6 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bdd2a1ca09ef044a9525a7b3bba69c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pause: 27
   forward: 119
   back: 115
   left: 97
@@ -108,6 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyAnimator: {fileID: 337198313445771415}
   legsAnimator: {fileID: 4566886439031966626}
+  stepClip: {fileID: 8300000, guid: a80de9ae28ad22343b02341cf4e65d57, type: 3}
 --- !u!114 &8688280013719153010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,18 +140,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxmana: 100
   mana: 0
---- !u!114 &2477594129024745773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1020457654631243474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79916821490aff94a9eccbb95334841b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &5170932437285907765
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -208,6 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 8688280013719153010}
+  hitClip: {fileID: 8300000, guid: c295c8dc430614a4982f7921b63a725c, type: 3}
 --- !u!1 &3208576617395880012
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,7 +210,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6548116214127287424}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WizardBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +244,8 @@ GameObject:
   - component: {fileID: 3676143885045348186}
   - component: {fileID: 1786934189297365131}
   - component: {fileID: 4566886439031966626}
-  m_Layer: 6
+  - component: {fileID: 7534447802823210480}
+  m_Layer: 3
   m_Name: Legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,6 +336,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7534447802823210480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6129566517719470366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4b0119b71581dd478b95e3caaba9e8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stepClip: {fileID: 8300000, guid: a80de9ae28ad22343b02341cf4e65d57, type: 3}
 --- !u!1 &7574654050808825279
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,7 +360,7 @@ GameObject:
   - component: {fileID: 2788156496805704921}
   - component: {fileID: 4932180522921882017}
   - component: {fileID: 337198313445771415}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -451,6 +458,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 554740657638141028}
     m_Modifications:
+    - target: {fileID: -4598723771997620796, guid: 3f8bf953048591c428a4da5ca0657156, type: 3}
+      propertyPath: fireClip
+      value: 
+      objectReference: {fileID: 8300000, guid: cb066dd707d97bd49abfedabf27403b0, type: 3}
+    - target: {fileID: -4598723771997620796, guid: 3f8bf953048591c428a4da5ca0657156, type: 3}
+      propertyPath: lightningClip
+      value: 
+      objectReference: {fileID: 8300000, guid: dd9eb251147ba6b4ebce216e25fa64a4, type: 3}
     - target: {fileID: 1847625296369081345, guid: 3f8bf953048591c428a4da5ca0657156, type: 3}
       propertyPath: m_RootOrder
       value: 1

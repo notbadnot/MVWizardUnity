@@ -8,7 +8,6 @@ public class AngryVision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject); 
         var noticedCharacter = collision.GetComponent<Character>();
         if (noticedCharacter != null)
         {
@@ -16,7 +15,5 @@ public class AngryVision : MonoBehaviour
             
         }
     }
-
-
 
 }

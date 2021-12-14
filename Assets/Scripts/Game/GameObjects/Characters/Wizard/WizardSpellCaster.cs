@@ -7,6 +7,9 @@ public class WizardSpellCaster : MonoBehaviour
 {
     [SerializeField] GameObject fireSpell;
     [SerializeField] GameObject lightningSpell;
+
+    [SerializeField] AudioClip fireClip;
+    [SerializeField] AudioClip lightningClip;
     public ManaComponent manaComponent;
 
 
@@ -18,19 +21,15 @@ public class WizardSpellCaster : MonoBehaviour
 
 
     private PrefabFactory prefabFactory;
+    private SoundManager soundManager;
     [Inject]
-    private void Construct (PrefabFactory _prefabFactory)
+    private void Construct (PrefabFactory _prefabFactory, SoundManager _soundManager)
     {
         prefabFactory = _prefabFactory;
+        soundManager = _soundManager;
     }
 
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     public void StopCasting()
     {
         if (!castingNow)
@@ -49,19 +48,17 @@ public class WizardSpellCaster : MonoBehaviour
 
         if (!castingNow)
         {
-
-
-
-
             GameObject localSpell = fireSpell;
+            AudioClip localClip = fireClip;
             if (element == SpellModel.ElementType.fire)
             {
                 localSpell = fireSpell;
+                localClip = fireClip;
             }else if (element == SpellModel.ElementType.lightning)
             {
                 localSpell = lightningSpell;
+                localClip = lightningClip;
             }
-
 
             if (spellType == SpellModel.SpellType.ball)
             {
@@ -85,13 +82,16 @@ public class WizardSpellCaster : MonoBehaviour
                 var ball = castingSpell.AddComponent<Ball>();
                 ball.mySpell = spellOfCastingSpell;
 
+                var sound = soundManager.SpawnSoundObject();
+                sound.Play(localClip, castingSpell.transform.position, false, true);
+                sound.transform.SetParent(castingSpell.transform);
+
                 coolDown += 5;
 
             }
             else
             {
 
-                //castingSpell = Instantiate(localSpell, gameObject.transform);
 
                 castingSpell = prefabFactory.Spawn(localSpell, gameObject.transform);
                 castingSpell.gameObject.transform.localScale = new Vector3(0.3f,0.3f,0.3f);
@@ -101,6 +101,10 @@ public class WizardSpellCaster : MonoBehaviour
                 spellOfCastingSpell.spellType = spellType;
                 castingNow = true;
 
+                var sound = soundManager.SpawnSoundObject();
+                sound.Play(localClip, castingSpell.transform.position, false, true);
+                sound.transform.SetParent(castingSpell.transform);
+
                 if (spellType == SpellModel.SpellType.wave)
                 {
                     var wave = castingSpell.AddComponent<Wave>();
@@ -109,14 +113,9 @@ public class WizardSpellCaster : MonoBehaviour
                 }
 
             }
-
-
-
-
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         coolDown = Mathf.Max(0, coolDown - 10f * Time.deltaTime);

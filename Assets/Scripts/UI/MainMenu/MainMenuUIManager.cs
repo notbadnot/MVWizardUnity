@@ -7,13 +7,16 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuUIManager : MonoBehaviour
 {
-    //private
+
+    [SerializeField] AudioClip clickClip;
     private MMenuStartView startView;
     private MMenuView menuView;
+    private SoundManager soundManager;
     [Inject]
-    private void Construct(MMenuView _menuView)
+    private void Construct(MMenuView _menuView, SoundManager _soundManager)
     {
         menuView = _menuView;
+        soundManager = _soundManager;
     }
     void Start()
     {
@@ -33,11 +36,13 @@ public class MainMenuUIManager : MonoBehaviour
 
     private void StartView_PressStartEvent()
     {
-        SceneManager.LoadScene("TrainingScene");
         UnSubscribeForStartEvents();
+        soundManager.SpawnSoundObject().Play(clickClip, Vector3.zero, true, false);
+        SceneManager.LoadScene("TrainingScene");
     }
     private void StartView_PressQuitEvent()
     {
+        soundManager.SpawnSoundObject().Play(clickClip, Vector3.zero, true, false);
         UnSubscribeForStartEvents();
         QuitHelper.Exit();
     }

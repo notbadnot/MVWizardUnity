@@ -34,7 +34,6 @@ public class WizardControllerScript : Controller
         wizard = GetComponent<Wizard>();
     }
 
-    // Update is called once per frame
     void Update()
     {
 

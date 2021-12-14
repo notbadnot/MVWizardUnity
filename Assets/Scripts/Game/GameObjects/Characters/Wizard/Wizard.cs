@@ -12,28 +12,28 @@ public class Wizard : Character
     [SerializeField] HealthComponent healthComponent;
     [SerializeField] ManaComponent manaComponent;
 
+    [SerializeField] AudioClip deathClip;
+
     public bool alive = true;
 
     public SpellModel spellModel;
 
-    private int spellNumber = 1;
-
     private HandlerOfPlayerModels handlerOfPlayerModels;
     private InGameUIManager uIManager;
 
-
+    private SoundManager soundManager;
 
     [Inject]
-    private void Construct(HandlerOfPlayerModels _handlerOfPlayerModels)
+    private void Construct(HandlerOfPlayerModels _handlerOfPlayerModels, InGameUIManager _uIManager, SoundManager _soundManager)
     {
         handlerOfPlayerModels = _handlerOfPlayerModels;
-        
+        uIManager = _uIManager;
+        soundManager = _soundManager;
+
     }
 
     void Start()
     {
-        movingComponent = GetComponent<MovingComponent>(); //fix then
-        animationScript = GetComponent<WizardAnimationScript>(); // fix then
         healthComponent.ImDeadEvent += HealthComponent_ImDeadEvent;
         healthComponent.HealthChangedEvent += HealthComponent_HealthChangedEvent;
         spellCaster.manaComponent = manaComponent;
@@ -45,12 +45,15 @@ public class Wizard : Character
 
     private void ManaComponent_ManaChangedEvent()
     {
-        throw new System.NotImplementedException();
+        handlerOfPlayerModels.statsModel.mana = manaComponent.mana;
+        uIManager.StatsModelManaChanged();
+        
     }
 
     private void HealthComponent_HealthChangedEvent()
     {
-        throw new System.NotImplementedException();
+        handlerOfPlayerModels.statsModel.health = healthComponent.health;
+        uIManager.StatsModelHealthChanged();
     }
 
     private void ManaComponent_NoManaEvent()
@@ -60,6 +63,7 @@ public class Wizard : Character
 
     private void HealthComponent_ImDeadEvent()
     {
+        soundManager.SpawnSoundObject().Play(deathClip, gameObject.transform.position);
         alive = false;
         animationScript.PlayDeadAnimation();
     }
@@ -82,9 +86,7 @@ public class Wizard : Character
     }
     public void Attack()
     {
-        Debug.Log(handlerOfPlayerModels.spellModel);
-        var whichspell = handlerOfPlayerModels.spellModel.SpellBook[spellNumber];
-        Debug.Log(whichspell);
+        var whichspell = handlerOfPlayerModels.spellModel.SpellBook[handlerOfPlayerModels.statsModel.numberOfSpell];
         spellCaster.CastSpell(whichspell.elementType, whichspell.spellType);
         animationScript.StartAttackingAnimation();
     }
@@ -102,16 +104,9 @@ public class Wizard : Character
 
     public void SetSpellNumber(int number)
     {
-        spellNumber = number;
+        handlerOfPlayerModels.statsModel.numberOfSpell = number;
+        uIManager.StatsModelSpellNumberChanged();
     }
 
-
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 }

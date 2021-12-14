@@ -16,7 +16,6 @@ public class SpellModel
     {
         wave,
         ball,
-        //beam
     }
 
 

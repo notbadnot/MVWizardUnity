@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5516135916247451243}
   - component: {fileID: 6723115692369724230}
   - component: {fileID: 6485972414188878913}
+  - component: {fileID: 6211280904042376598}
   m_Layer: 0
   m_Name: SpellCreatingChoosing
   m_TagString: Untagged
@@ -71,6 +72,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b7b7b1978d33b34d9118bc53faff42e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6211280904042376598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160570948623210660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &1728510153315432464
 GameObject:
   m_ObjectHideFlags: 0

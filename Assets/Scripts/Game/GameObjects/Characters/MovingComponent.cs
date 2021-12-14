@@ -24,7 +24,6 @@ public class MovingComponent : MonoBehaviour
 
 
     private Rigidbody2D rigidbody;
-    // Start is called before the first frame update
     void Start()
     {
         rigidbody = gameObject.GetComponent<Rigidbody2D>();
@@ -63,8 +62,6 @@ public class MovingComponent : MonoBehaviour
             }
 
         }
-        var gotoVector = rigidbody.position + directionVector * localSpeed;
-        //rigidbody.position = rigidbody.position + directionVector * localSpeed;
         rigidbody.AddForce(directionVector.normalized * localSpeed);
     }
 
@@ -91,8 +88,6 @@ public class MovingComponent : MonoBehaviour
 
         if (rigidbody.rotation > 360) { rigidbody.rotation = 0; }
         if (rigidbody.rotation < -360) { rigidbody.rotation = 0; }
-
-
     }
 
 

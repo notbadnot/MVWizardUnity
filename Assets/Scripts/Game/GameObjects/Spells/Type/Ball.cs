@@ -11,8 +11,6 @@ public class Ball : MonoBehaviour
     {
         //======================Collider__Zone======================================
         var damagezone = gameObject.AddComponent<CircleCollider2D>();
-
-        var zoneSize = damagezone.radius;
         damagezone.radius = 2f;
 
         //======================RigidBody__Zone=============================
@@ -26,19 +24,13 @@ public class Ball : MonoBehaviour
         var spellPS = gameObject.GetComponent<ParticleSystem>();
 
         var spellMain = spellPS.main;
-
         spellMain.simulationSpeed = 3;
-
 
         var spellEmision = spellPS.emission;
         spellEmision.rateOverTime = 200;
 
-
         var SpellVOL = spellPS.velocityOverLifetime;
         SpellVOL.enabled = true;
-
-
-
     }
 
     IEnumerator DestroyingTimer()
@@ -57,7 +49,6 @@ public class Ball : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         var spellAceptor = collision.gameObject.GetComponent<SpellAceptor>();
-
         if (spellAceptor != null)
         {
             mySpell.CastSpellOnTarget(spellAceptor);

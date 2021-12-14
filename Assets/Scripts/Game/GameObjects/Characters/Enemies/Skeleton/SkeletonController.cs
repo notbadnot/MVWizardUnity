@@ -120,9 +120,6 @@ public class SkeletonController : MonoBehaviour
         {
             PeacefulBehaviour();
         }
-        
-            
-
     }
 
 

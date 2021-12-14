@@ -485,6 +485,7 @@ GameObject:
   - component: {fileID: 4162077422258763964}
   - component: {fileID: 2290704915718144984}
   - component: {fileID: 8230253534631216843}
+  - component: {fileID: -4703673061469754880}
   m_Layer: 0
   m_Name: SpellCreatingEditing
   m_TagString: Untagged
@@ -547,6 +548,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: {fileID: 9108673973397750647}
   type: {fileID: 1686504581740347479}
+--- !u!114 &-4703673061469754880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365367567840928461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &1812793801755044935
 GameObject:
   m_ObjectHideFlags: 0

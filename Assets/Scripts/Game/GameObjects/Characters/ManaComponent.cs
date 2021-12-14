@@ -15,8 +15,6 @@ public class ManaComponent : MonoBehaviour
     {
         mana = maxmana;
     }
-    // Start is called before the first frame update
-
 
 
     public void ChangeMana(float amout)
@@ -24,7 +22,6 @@ public class ManaComponent : MonoBehaviour
         mana = Mathf.Max(mana + amout, 0);
         mana = Mathf.Min(mana, maxmana);
         ManaChangedEvent?.Invoke();
-        Debug.Log("mana " + mana);
         if (mana <= 0)
         {
             NoManaEvent?.Invoke();

@@ -41,8 +41,4 @@ public class Skeleton : MonoBehaviour
         StartCoroutine(AttackingTimer());
     }
 
-    void Update()
-    {
-        
-    }
 }

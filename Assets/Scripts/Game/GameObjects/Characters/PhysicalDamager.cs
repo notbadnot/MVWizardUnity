@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PhysicalDamager : MonoBehaviour
 {
     [SerializeField] float damage = 10;
+
+
     public void DoDamage(PhysicalAcceptor physicalAcceptor)
     {
         var rbodyOfAcceptor = physicalAcceptor.gameObject.GetComponent<Rigidbody2D>();
@@ -16,10 +19,7 @@ public class PhysicalDamager : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
 
-    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -27,7 +27,6 @@ public class PhysicalDamager : MonoBehaviour
         {
             return;
         }
-        Debug.Log(collision.gameObject);
         var physicalAcceptor = collision.gameObject.GetComponent<PhysicalAcceptor>();
         if (physicalAcceptor != null)
         {
