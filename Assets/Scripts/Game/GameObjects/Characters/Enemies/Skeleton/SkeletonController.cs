@@ -102,6 +102,10 @@ public class SkeletonController : MonoBehaviour
     }
     void Update()
     {
+        if (Time.timeScale == 0)
+        {
+            return;
+        }
 
         var tempTarget = vision.myTarget;
         if (tempTarget != null && tempTarget.GetType() == typeof(Wizard))

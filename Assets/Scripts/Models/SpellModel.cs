@@ -8,14 +8,15 @@ public class SpellModel
     public enum ElementType
     {
         fire,
-        lightning
-            
+        lightning,
+        air
     }
 
     public enum SpellType
     {
         wave,
         ball,
+        beam
     }
 
 
@@ -38,7 +39,7 @@ public class SpellModel
         { 
             new SpellInBook(ElementType.fire, SpellType.wave),
             new SpellInBook(ElementType.lightning, SpellType.wave),
-            new SpellInBook(ElementType.fire, SpellType.ball),
+            new SpellInBook(ElementType.air, SpellType.ball),
             new SpellInBook(ElementType.lightning, SpellType.ball)  
         };
     }

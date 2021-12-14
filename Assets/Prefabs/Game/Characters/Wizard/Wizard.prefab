@@ -38,6 +38,7 @@ Transform:
   m_Children:
   - {fileID: 6548116214127287424}
   - {fileID: 1629391540731775036}
+  - {fileID: 7932215925930318922}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -58,8 +59,9 @@ MonoBehaviour:
   spellCaster: {fileID: 5698982672788693497}
   healthComponent: {fileID: 8688280013719153010}
   manaComponent: {fileID: 5681173075226898349}
+  interactor: {fileID: 6431863943547100340}
   deathClip: {fileID: 8300000, guid: c7c34d21c15855d4ab64a5069e821250, type: 3}
-  alive: 0
+  alive: 1
 --- !u!114 &9059695018453462215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,6 +83,7 @@ MonoBehaviour:
   second: 50
   third: 51
   fourth: 52
+  interact: 101
   wizard: {fileID: 0}
   mainCamera: {fileID: 0}
 --- !u!114 &836621341125280310
@@ -95,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5255202d836904f468b2ed226fa7cef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.01
+  speed: 150
   nonForwardMultipluer: 0.5
 --- !u!114 &-3094669971452651031
 MonoBehaviour:
@@ -111,7 +114,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyAnimator: {fileID: 337198313445771415}
   legsAnimator: {fileID: 4566886439031966626}
-  stepClip: {fileID: 8300000, guid: a80de9ae28ad22343b02341cf4e65d57, type: 3}
 --- !u!114 &8688280013719153010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,8 +181,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 40
+  m_AngularDrag: 10
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 3c19a1f88aa000d43b165c06e1342016, type: 2}
   m_Interpolate: 0
@@ -349,6 +351,76 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stepClip: {fileID: 8300000, guid: a80de9ae28ad22343b02341cf4e65d57, type: 3}
+--- !u!1 &7137176409014935031
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7932215925930318922}
+  - component: {fileID: 6431863943547100340}
+  - component: {fileID: 3521217950403244507}
+  m_Layer: 0
+  m_Name: Interractor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &7932215925930318922
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7137176409014935031}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 554740657638141028}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6431863943547100340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7137176409014935031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306eb16873226fe4ca94ae98381fd9a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &3521217950403244507
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7137176409014935031}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.005871374, y: 0.15265535}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.17800978, y: 0.17800972}
+  m_EdgeRadius: 0
 --- !u!1 &7574654050808825279
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,6 +530,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 554740657638141028}
     m_Modifications:
+    - target: {fileID: -4598723771997620796, guid: 3f8bf953048591c428a4da5ca0657156, type: 3}
+      propertyPath: airSpell
+      value: 
+      objectReference: {fileID: 993852220445704758, guid: ad13caef4c3f6e34b842c49576b3d6ca, type: 3}
     - target: {fileID: -4598723771997620796, guid: 3f8bf953048591c428a4da5ca0657156, type: 3}
       propertyPath: fireClip
       value: 

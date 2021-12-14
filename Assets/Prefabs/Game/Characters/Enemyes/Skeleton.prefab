@@ -150,7 +150,7 @@ Transform:
   m_GameObject: {fileID: 4564223747378665039}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children:
   - {fileID: 5072460281007010307}
   - {fileID: 4134114962267622394}
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5255202d836904f468b2ed226fa7cef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.01
+  speed: 160
   nonForwardMultipluer: 0.5
 --- !u!114 &1824048084266743200
 MonoBehaviour:
@@ -203,7 +203,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonAnimator: {fileID: 4229969335467788711}
-  stepClip: {fileID: 8300000, guid: a80de9ae28ad22343b02341cf4e65d57, type: 3}
 --- !u!114 &5408779680556301103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,7 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetpoint: {x: 0, y: 0}
   myTarget: {fileID: 0}
-  mapComponent: {fileID: 0}
+  mapComponent: {fileID: -7479807126958909509}
   vision: {fileID: 2246541531843830171}
   patroling: 0
   deltapatrolingPoint: {x: 0, y: 0}
@@ -235,8 +234,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 40
+  m_AngularDrag: 10
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -318,9 +317,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skeleton: {fileID: 1824048084266743200}
   healthComponent: {fileID: -7652700090860057245}
-  rigidbody: {fileID: 0}
+  rigidbody: {fileID: 2248479843993563917}
   fireEffectPrefab: {fileID: 4171131759778106919, guid: bbd922bc70f01844b91b271ec483c949, type: 3}
   lightningEffectPrefab: {fileID: 3253888369008321243, guid: 02fda92a82963b244ac2f03a34b9eee2, type: 3}
+  airEffectPrefab: {fileID: 993852220445704758, guid: ad13caef4c3f6e34b842c49576b3d6ca, type: 3}
 --- !u!1 &4661946348118004040
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,7 +409,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4134114962267622394
 Transform:
   m_ObjectHideFlags: 0

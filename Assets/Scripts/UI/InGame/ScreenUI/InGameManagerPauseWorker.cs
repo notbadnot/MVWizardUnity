@@ -17,10 +17,11 @@ public class InGameManagerPauseWorker
     {
         pauseView.gameObject.SetActive(true);
         subscriber.SubscribeToPauseEvents();
+        Time.timeScale = 0;
     }
     public void PressedMainMenu()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("MainMenu");
         subscriber.UnSubscribeToPauseEvents();
     }
 
@@ -28,5 +29,6 @@ public class InGameManagerPauseWorker
     {
         pauseView.gameObject.SetActive(false);
         subscriber.UnSubscribeToPauseEvents();
+        Time.timeScale = 1f;
     }
 }

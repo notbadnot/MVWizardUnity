@@ -38,7 +38,7 @@ public class MainMenuUIManager : MonoBehaviour
     {
         UnSubscribeForStartEvents();
         soundManager.SpawnSoundObject().Play(clickClip, Vector3.zero, true, false);
-        SceneManager.LoadScene("TrainingScene");
+        SceneManager.LoadScene("DemoScene");
     }
     private void StartView_PressQuitEvent()
     {

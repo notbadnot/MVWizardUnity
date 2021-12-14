@@ -7,6 +7,7 @@ public class WizardSpellCaster : MonoBehaviour
 {
     [SerializeField] GameObject fireSpell;
     [SerializeField] GameObject lightningSpell;
+    [SerializeField] GameObject airSpell;
 
     [SerializeField] AudioClip fireClip;
     [SerializeField] AudioClip lightningClip;
@@ -58,6 +59,9 @@ public class WizardSpellCaster : MonoBehaviour
             {
                 localSpell = lightningSpell;
                 localClip = lightningClip;
+            }else if (element == SpellModel.ElementType.air)
+            {
+                localSpell = airSpell;
             }
 
             if (spellType == SpellModel.SpellType.ball)
@@ -110,6 +114,11 @@ public class WizardSpellCaster : MonoBehaviour
                     var wave = castingSpell.AddComponent<Wave>();
                     wave.mySpell = spellOfCastingSpell;
                     manaUse = 18;
+                } else if (spellType == SpellModel.SpellType.beam)
+                {
+                    var beam = castingSpell.AddComponent<Beam>();
+                    beam.mySpell = spellOfCastingSpell;
+                    manaUse = 25;
                 }
 
             }

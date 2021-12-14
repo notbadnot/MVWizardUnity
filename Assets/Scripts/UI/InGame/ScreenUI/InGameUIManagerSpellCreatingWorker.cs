@@ -44,6 +44,11 @@ public class InGameUIManagerSpellCreatingWorker
     public void QuitSpellEditor()
     {
         subscriber.UnSubscribeToSpellChoosingEvents();
+        if (editingView.gameObject.activeInHierarchy)
+        {
+            editingView.gameObject.SetActive(false);
+            subscriber.UnSubscribeToSpellEditingEvents();
+        }
         choosingView.gameObject.SetActive(false);
         spellCreatingView.gameObject.SetActive(false);
     }

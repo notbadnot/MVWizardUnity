@@ -14,6 +14,7 @@ public class WizardControllerScript : Controller
     [SerializeField] KeyCode second = KeyCode.Alpha2;
     [SerializeField] KeyCode third = KeyCode.Alpha3;
     [SerializeField] KeyCode fourth = KeyCode.Alpha4;
+    [SerializeField] KeyCode interact = KeyCode.E;
 
     [SerializeField] Wizard wizard;
 
@@ -42,10 +43,10 @@ public class WizardControllerScript : Controller
             uIManager.PressedPauseButton();
         }
 
-        /*if (!wizard.alive)
+        if (!wizard.alive || Time.timeScale ==0)
         {
             return;
-        }*/
+        }
 
         wizard.RotateToPoint(mainCamera.ScreenToWorldPoint(Input.mousePosition));
 
@@ -70,7 +71,10 @@ public class WizardControllerScript : Controller
         }
         else
         {
-            wizard.StopAttacking();
+            if (Time.timeScale > 0)
+            {
+                wizard.StopAttacking();
+            }
         }
 
         if (Input.GetKeyDown(first))
@@ -85,6 +89,10 @@ public class WizardControllerScript : Controller
         }else if (Input.GetKeyDown(fourth))
         {
             wizard.SetSpellNumber(3);
+        }
+        if (Input.GetKeyDown(interact))
+        {
+            wizard.Interract();
         }
 
 

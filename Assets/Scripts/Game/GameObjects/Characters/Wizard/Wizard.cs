@@ -11,6 +11,7 @@ public class Wizard : Character
     [SerializeField] WizardSpellCaster spellCaster;
     [SerializeField] HealthComponent healthComponent;
     [SerializeField] ManaComponent manaComponent;
+    [SerializeField] Interactor interactor;
 
     [SerializeField] AudioClip deathClip;
 
@@ -106,6 +107,18 @@ public class Wizard : Character
     {
         handlerOfPlayerModels.statsModel.numberOfSpell = number;
         uIManager.StatsModelSpellNumberChanged();
+    }
+
+    public void Interract()
+    {
+        interactor.gameObject.SetActive(true);
+        StartCoroutine(InterractorDissapear());
+    }
+    IEnumerator InterractorDissapear()
+    {
+        yield return new WaitForSeconds(0.1f);
+        interactor.gameObject.SetActive(false);
+        yield return null;
     }
 
 

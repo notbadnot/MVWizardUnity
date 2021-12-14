@@ -9,12 +9,16 @@ public class SkeletonSpellAceptor : SpellAceptor
     [SerializeField] Rigidbody2D rigidbody;
     [SerializeField] GameObject fireEffectPrefab;
     [SerializeField] GameObject lightningEffectPrefab;
+    [SerializeField] GameObject airEffectPrefab;
 
     private Coroutine firecoroutine;
     private GameObject fireEffect;
 
     private Coroutine lightningCoroutine;
     private GameObject lightningEffect;
+
+    private Coroutine airCoroutine;
+    private GameObject airEffect;
 
     public override void AcceptSpell(Spell spell)
     {
@@ -24,6 +28,9 @@ public class SkeletonSpellAceptor : SpellAceptor
         }else if (spell.element == SpellModel.ElementType.lightning)
         {
             AcceptLightningSpell(spell);
+        }else if (spell.element == SpellModel.ElementType.air)
+        {
+            AcceptAirSpell(spell);
         }
         
     }
@@ -107,8 +114,56 @@ public class SkeletonSpellAceptor : SpellAceptor
         if (lightningCoroutine != null)
         {
             StopCoroutine(lightningCoroutine);
-            firecoroutine = null;
+            lightningCoroutine = null;
             Destroy(lightningEffect);
+        }
+    }
+
+
+    private void AcceptAirSpell(Spell spell)
+    {
+        float[] modifiers = GetModifiers(spell.spellType);
+        StopFireEffect();
+        rigidbody.AddForce(((Vector2)(gameObject.transform.position - spell.gameObject.transform.position)).normalized * 7000 * modifiers[0]);
+        rigidbody.AddTorque(Random.Range(-1440, 1440) * modifiers[0]);
+        if (modifiers[1] > Random.value)
+        {
+            StartAirEffect();
+        }
+    }
+
+    private void StartAirEffect()
+    {
+        if (airCoroutine == null)
+        {
+            airEffect = Instantiate(airEffectPrefab, gameObject.transform);
+            airEffect.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+            airCoroutine = StartCoroutine(AirEffect());
+        }
+    }
+
+    IEnumerator AirEffect()
+    {
+        for (int i = 0; i < 35; i++)
+        {
+            Vector2 pushVector = new Vector2(Random.Range(-1, 1), Random.Range(-1, 1));
+            rigidbody.AddTorque(Random.Range(-720, 720));
+            rigidbody.AddForce(pushVector.normalized * 700);
+
+            yield return new WaitForSeconds(0.1f);
+
+        }
+        Destroy(airEffect);
+        airCoroutine = null;
+        yield return null;
+    }
+    private void StopAirEffect()
+    {
+        if (airCoroutine != null)
+        {
+            StopCoroutine(airCoroutine);
+            airCoroutine = null;
+            Destroy(airEffect);
         }
     }
     private float[] GetModifiers(SpellModel.SpellType spelltype)
@@ -124,6 +179,10 @@ public class SkeletonSpellAceptor : SpellAceptor
         {
             modifiers[0] = 1f;
             modifiers[1] = 0.4f;
+        }else if (spelltype == SpellModel.SpellType.beam)
+        {
+            modifiers[0] = 0.2f;
+            modifiers[1] = 0.01f;
         }
 
 

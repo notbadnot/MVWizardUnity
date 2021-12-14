@@ -164,6 +164,11 @@ public class InGameUIManager : MonoBehaviour
         spellCreatingWorker.OpenSpellEditor();
     }
 
+    public void CloseSpellEditingMenu()
+    {
+        spellCreatingWorker.QuitSpellEditor();
+    }
+
 
     //==========Think more later=========
     public void StatsModelHealthChanged()

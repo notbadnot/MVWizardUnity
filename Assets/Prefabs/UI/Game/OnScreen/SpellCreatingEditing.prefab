@@ -883,6 +883,8 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Ball
       m_Image: {fileID: 0}
+    - m_Text: Beam (bugged at the moment)
+      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1759,6 +1761,8 @@ MonoBehaviour:
     - m_Text: Fire
       m_Image: {fileID: 0}
     - m_Text: Lightning
+      m_Image: {fileID: 0}
+    - m_Text: Air
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
